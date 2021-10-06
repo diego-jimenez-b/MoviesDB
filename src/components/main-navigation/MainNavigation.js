@@ -12,8 +12,8 @@ const MainNavigation = ({ onChangeType, displayType }) => {
   const inputChangeHandler = (event) => setUserInput(event.target.value);
 
   const selectMovieHandler = (event) => {
-    let type = `/${displayType}/`;
-    if (displayType === 'all') type = `/${event.target.dataset.type}/`;
+    let type = displayType;
+    if (displayType === 'all') type = event.target.dataset.type;
     const id = event.target.dataset.id;
     setSelectedMovie({ id, type });
   };
@@ -32,7 +32,7 @@ const MainNavigation = ({ onChangeType, displayType }) => {
         fetch(getAutocompleteUrl(type, userInput))
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             const autoObj = data.results.filter((result) => {
               return result.media_type !== 'person';
             });

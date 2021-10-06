@@ -8,8 +8,7 @@ export const getImgUrl = (resolution, path) => {
 };
 
 export const getTrendingUrl = (type) => {
-  const typePath = `/trending/${type}/week`;
-  const url = `${config.url}${typePath}?api_key=${config.apiKey}`;
+  const url = `${config.url}/trending/${type}/week?api_key=${config.apiKey}`;
   return url;
 };
 

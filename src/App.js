@@ -31,7 +31,7 @@ function App() {
     fetchMoviesHandler();
   }, [type, fetchMoviesHandler]);
 
-  console.log(movies[0]);
+  // console.log(movies[0]);
 
   // useEffect(() => {
   //   fetch(

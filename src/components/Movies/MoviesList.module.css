@@ -18,16 +18,42 @@
   justify-content: space-evenly;
 }
 
+.show-genres {
+  color: white;
+  margin: 0 0 5px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}
+.show-genres img {
+  width: 20px;
+  position: relative;
+  top: 4px;
+  margin-right: 8px;
+  filter: brightness(0%) invert(100%);
+  transition: .16s ease-in-out;
+}
+img.rotate {
+  transform: rotate(-90deg);
+}
+
 ul.filters {
   list-style-type: none;
   padding: 0;
-  margin: 0 0 0 20px;
+  margin: 0 0 25px 20px;
   display: flex;
+  flex-wrap: wrap;
 }
 .filters li {
   background-color: white;
   border-radius: 10px;
   padding: 5px 10px;
   margin-right: 10px;
+  margin-top: 5px;
   cursor: pointer;
+}
+
+.filters li.selected {
+  background-color: rgb(63, 221, 205);
 }
