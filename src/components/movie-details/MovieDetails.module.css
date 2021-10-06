@@ -1,0 +1,69 @@
+.movie-container {
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  max-width: 800px;
+  height: 550px;
+}
+
+.movie-container img {
+  height: 100%;
+}
+
+.info {
+  padding: 0 10px;
+  font-family: Lato, sans-serif;
+}
+.info h2 {
+  font-size: 33px;
+  line-height: 37px;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.info h3 {
+  font-size: 19px;
+  margin-top: 12px;
+  font-family: Oswald, sans-serif;
+}
+.info p {
+  margin: 20px 0 30px;
+}
+
+.info > span {
+  margin: 10px 0;
+  display: block;
+  font-family: Oswald, sans-serif;
+}
+.info > span:nth-of-type(1) {
+  font-weight: bold;
+  font-size: 19px;
+}
+.info > span:nth-of-type(2) {
+  font-size: 14px;
+}
+
+.info-sections {
+  display: flex;
+  flex-wrap: wrap;
+}
+.info-sections div {
+  width: 50%;
+  font-family: Oswald, sans-serif;
+  margin: 8px 0;
+  /* font-weight: bold; */
+}
+.info-sections span {
+  display: block;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.message {
+  border-radius: 20px;
+  background-color: white;
+  padding: 20px 40px;
+  font-weight: bold;
+  z-index: 5;
+}

@@ -1,0 +1,61 @@
+.top-bar {
+  background-color: #032541;
+  padding: 0 20px;
+  box-shadow: 0 20px 40px black;
+}
+
+.top-bar > div {
+  padding: 10px 0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.top-bar div:first-child {
+  border-bottom: 2px solid white;;
+}
+.top-bar h1 {
+  margin: 0;
+}
+
+.top-bar ul  {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+}
+.top-bar li {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 3px 17px 3px 0;
+  cursor: pointer;
+}
+
+.top-bar input {
+  width: 350px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.nav {
+  position: relative;
+}
+.auto-box {
+  width: 350px;
+  background-color: black;
+  position: absolute;
+  right: 0;
+  top: 90%;
+  z-index: 2;
+}
+.auto-box span {
+  display: block;
+  font-size: 15px;
+  padding: 5px;
+}
+.auto-box span:hover {
+  background-color: rgb(70, 70, 70);
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}

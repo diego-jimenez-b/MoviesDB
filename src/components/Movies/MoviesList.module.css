@@ -1,0 +1,33 @@
+.section {
+  padding: 25px 0;
+}
+.section h2 {
+  margin: 0;
+}
+.section > h2 {
+  color: white;
+  margin: 12px 20px;
+  font-size: 28px;
+}
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+ul.filters {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 0 20px;
+  display: flex;
+}
+.filters li {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
