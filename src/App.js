@@ -12,16 +12,18 @@ function App() {
   const [type, setType] = useState('movie');
 
   const fetchMoviesHandler = useCallback(
-    (genreId) => {
+    (genreId, pageNum) => {
       let url;
       if (genreId) {
-        url = getMediaUrlByGenre(type, genreId);
+        url = getMediaUrlByGenre(type, genreId, pageNum);
       } else url = getTrendingUrl(type);
 
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          setMovies(data.results);
+          if (pageNum) {
+            setMovies((prevState) => [...prevState, ...data.results]);
+          } else setMovies(data.results);
         });
     },
     [type]

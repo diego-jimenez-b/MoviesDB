@@ -20,6 +20,7 @@ export const getAutocompleteUrl = (type, input) => {
   return `${config.url}/search/${type}/?api_key=${config.apiKey}&query=${input}`;
 };
 
-export const getMediaUrlByGenre = (type, genreId) => {
-  return `${config.url}/discover/${type}?api_key=${config.apiKey}&with_genres=${genreId}`;
+export const getMediaUrlByGenre = (type, genreId, pageNum) => {
+  const pagePath = pageNum ? `&page=${pageNum}` : '';
+  return `${config.url}/discover/${type}?api_key=${config.apiKey}&with_genres=${genreId}${pagePath}`;
 };

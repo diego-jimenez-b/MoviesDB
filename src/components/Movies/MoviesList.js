@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import MovieDetails from '../movie-details/MovieDetails';
 import Movie from './Movie';
 import arrowIcon from '../../assets/icons/down-arrow.svg';
@@ -18,9 +18,13 @@ const genresArr = [
   { id: '16', name: 'Animation' },
 ];
 
+let isInitial = true;
+
 const MoviesList = ({ moviesList, onFetchByGenre, displayType }) => {
   const [showFilters, setShowFilters] = useState(false);
-  const [selectedGenre, setSelectedGenre] = useState(0);
+  const [currentFetchingPage, setCurrentFetchingPage] = useState(1);
+
+  const [selectedGenreId, setSelectedGenreId] = useState(0);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const showMovieDetails = useCallback(
@@ -34,9 +38,25 @@ const MoviesList = ({ moviesList, onFetchByGenre, displayType }) => {
   const toggleFiltersHandler = () => setShowFilters((prevState) => !prevState);
 
   const searchGenderHandler = (id) => {
-    setSelectedGenre(id);
+    setSelectedGenreId(id);
     onFetchByGenre(id === 0 ? null : id);
   };
+
+  const fetchMoreMovies = () => {
+    setCurrentFetchingPage((prevState) => prevState + 1);
+    onFetchByGenre(selectedGenreId, currentFetchingPage + 1);
+  };
+
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+
+    setCurrentFetchingPage(1);
+  }, [displayType, selectedGenreId]);
+
+  useEffect(() => setSelectedGenreId(0), [displayType]);
 
   let genres = genresArr;
   if (displayType === 'tv') {
@@ -65,7 +85,7 @@ const MoviesList = ({ moviesList, onFetchByGenre, displayType }) => {
         <ul className={classes.filters}>
           {genres.map((genre) => (
             <li
-              className={selectedGenre === genre.id ? classes.selected : ''}
+              className={selectedGenreId === genre.id ? classes.selected : ''}
               key={genre.id}
               onClick={searchGenderHandler.bind(null, genre.id)}
             >
@@ -82,6 +102,10 @@ const MoviesList = ({ moviesList, onFetchByGenre, displayType }) => {
           <Movie key={movie.id} data={movie} onShowDetails={showMovieDetails} />
         ))}
       </ul>
+
+      {displayType !== 'all' && selectedGenreId !== 0 && (
+        <button className={classes['load-btn']} onClick={fetchMoreMovies}>Load more movies</button>
+      )}
 
       {selectedMovie && (
         <MovieDetails

@@ -57,3 +57,19 @@ ul.filters {
 .filters li.selected {
   background-color: rgb(63, 221, 205);
 }
+
+.load-btn {
+  background-color: rgb(129, 18, 129);
+  color: white;
+  border: 2px solid black;
+  border-radius: 17px;
+  display: block;
+  padding: 15px 40px;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 25px auto;
+}
+.load-btn:hover {
+  cursor: pointer;
+  background-color: rgb(145, 22, 145);
+}
