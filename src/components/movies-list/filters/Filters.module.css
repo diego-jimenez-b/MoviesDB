@@ -37,3 +37,9 @@ ul.filters {
 .filters li.selected {
   background-color: rgb(63, 221, 205);
 }
+
+@media screen and (max-width: 615px) {
+  .filters {
+    justify-content: space-between;
+  }
+}

@@ -3,13 +3,14 @@
   color: white;
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 88%;
   max-width: 800px;
   height: 550px;
 }
 
 .movie-container img {
   height: 100%;
+  object-fit: contain;
 }
 
 .info {
@@ -75,3 +76,52 @@
   padding: 15px 30px;
   font-weight: bold;
 }
+
+@media screen and (max-width: 890px) {
+  .movie-container img {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .movie-container img {
+    width: 230px;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  .movie-container {
+    flex-direction: column;
+    overflow: auto;
+    padding-bottom: 25px;
+  }
+  .movie-container img {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .info h2 {
+    font-size: 30px;
+  }
+  .info h3 {
+    font-size: 17px;
+  }
+
+  .info p {
+    font-size: 15px;
+  }
+  .info > span:nth-of-type(1) {
+    font-size: 17px;
+  }
+  .info > span:nth-of-type(2) {
+    font-size: 12px;
+  }
+
+  .info-sections {
+    font-size: 14px
+  }
+  .info-sections span {
+    font-size: 18px
+  }
+}
+

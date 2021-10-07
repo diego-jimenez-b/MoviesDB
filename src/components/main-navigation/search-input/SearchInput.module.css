@@ -1,11 +1,13 @@
 .input {
-  width: 350px;
+  width: 98%;
+  max-width: 350px;
   padding: 5px;
   border-radius: 5px;
 }
 
 .auto-box {
-  width: 350px;
+  width: 98%;
+  max-width: 350px;
   background-color: black;
   position: absolute;
   right: 0;
@@ -20,4 +22,11 @@
 .auto-box span:hover {
   background-color: rgb(70, 70, 70);
   cursor: pointer;
+}
+
+@media screen and (max-width: 615px) {
+  .auto-box {
+    right: 50%;
+    transform: translateX(50%);
+  }
 }

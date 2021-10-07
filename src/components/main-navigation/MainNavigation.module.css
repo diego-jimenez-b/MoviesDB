@@ -37,3 +37,13 @@
 .underline {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 615px) {
+  .top-bar nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .top-bar nav input {
+    margin-top: 10px;
+  }
+}
