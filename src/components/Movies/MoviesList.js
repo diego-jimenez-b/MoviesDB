@@ -3,6 +3,7 @@ import MovieDetails from '../movie-details/MovieDetails';
 import Movie from './Movie';
 import arrowIcon from '../../assets/icons/down-arrow.svg';
 import classes from './MoviesList.module.css';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 const genresArr = [
   { id: 0, name: 'All' },
@@ -20,7 +21,7 @@ const genresArr = [
 
 let isInitial = true;
 
-const MoviesList = ({ moviesList, onFetchByGenre, displayType }) => {
+const MoviesList = ({ moviesList, onFetchByGenre, displayType, isLoading }) => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentFetchingPage, setCurrentFetchingPage] = useState(1);
 
@@ -98,13 +99,17 @@ const MoviesList = ({ moviesList, onFetchByGenre, displayType }) => {
       <h2>Trending this week</h2>
 
       <ul className={classes.list}>
+        {isLoading && moviesList.length === 0 && <LoadingSpinner />}
         {moviesList.map((movie) => (
           <Movie key={movie.id} data={movie} onShowDetails={showMovieDetails} />
         ))}
       </ul>
 
+      {isLoading && moviesList.length > 0 && <LoadingSpinner />}
       {displayType !== 'all' && selectedGenreId !== 0 && (
-        <button className={classes['load-btn']} onClick={fetchMoreMovies}>Load more movies</button>
+        <button className={classes['load-btn']} onClick={fetchMoreMovies}>
+          Load more movies
+        </button>
       )}
 
       {selectedMovie && (

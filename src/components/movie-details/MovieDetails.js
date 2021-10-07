@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { useEffect } from 'react/cjs/react.development';
 import { getImgUrl, getMediaUrl } from '../../api/api';
+import LoadingSpinner from '../UI/LoadingSpinner';
 import Modal from '../UI/Modal';
 
 import classes from './MovieDetails.module.css';
@@ -17,7 +18,11 @@ const MovieDetails = ({ id, type, onClose }) => {
   }, [id, type]);
 
   if (!data) {
-    return <Modal className={classes.message}>Loading ...</Modal>;
+    return (
+      <Modal className={classes.message}>
+        <LoadingSpinner />
+      </Modal>
+    );
   }
 
   console.log(data);
@@ -71,7 +76,7 @@ const MovieDetails = ({ id, type, onClose }) => {
                 Running Time: <span>{runtime} minutes</span>
               </div>
               <div>
-                Box Office: $<span>{revenue}</span>
+                Box Office: $<span>{revenue === 0 ? '--' : revenue}</span>
               </div>
             </Fragment>
           )}
