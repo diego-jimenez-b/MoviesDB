@@ -1,5 +1,4 @@
-import { Fragment, useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { Fragment, useState, useEffect } from 'react';
 import { getImgUrl, getMediaUrl } from '../../api/api';
 import useHttp from '../../hooks/useHttp';
 import LoadingSpinner from '../UI/LoadingSpinner';

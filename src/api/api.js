@@ -17,7 +17,7 @@ export const getMediaUrl = (type, id) => {
 };
 
 export const getAutocompleteUrl = (type, input) => {
-  return `${config.url}/search/${type}/?api_key=${config.apiKey}&query=${input}`;
+  return `${config.url}/search/${type}?api_key=${config.apiKey}&query=${input}`;
 };
 
 export const getMediaUrlByGenre = (type, genreId, pageNum) => {
