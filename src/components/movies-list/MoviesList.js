@@ -76,11 +76,11 @@ const MoviesList = ({
 
   return (
     <section className={classes.section}>
-      <Filters
+      {displayType !== 'all' && <Filters
         genres={genres}
         onSearchGender={searchGenderHandler}
         selectedGenreId={selectedGenreId}
-      />
+      />}
 
       <h2>Trending this week</h2>
 
