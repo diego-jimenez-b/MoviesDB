@@ -1,12 +1,10 @@
 import { Fragment, useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import MainNavigation from './components/main-navigation/MainNavigation';
-import MoviesList from './components/Movies/MoviesList';
+import MoviesList from './components/movies-list/MoviesList';
 import mainBackground from './assets/images/main-background.jpg';
 import { getMediaUrlByGenre, getTrendingUrl } from './api/api';
 import useHttp from './hooks/useHttp';
-
-// const popular = '/discover/movie?sort_by=popularity.desc&'
 
 function App() {
   const { fetchData, isLoading, error } = useHttp();
@@ -25,14 +23,6 @@ function App() {
           setMovies((prevState) => [...prevState, ...data.results]);
         } else setMovies(data.results);
       });
-
-      // fetch(url)
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     if (pageNum) {
-      //       setMovies((prevState) => [...prevState, ...data.results]);
-      //     } else setMovies(data.results);
-      //   });
     },
     [type, fetchData]
   );

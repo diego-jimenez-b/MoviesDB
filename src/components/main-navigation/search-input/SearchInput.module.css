@@ -1,0 +1,23 @@
+.input {
+  width: 350px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.auto-box {
+  width: 350px;
+  background-color: black;
+  position: absolute;
+  right: 0;
+  top: 90%;
+  z-index: 2;
+}
+.auto-box span {
+  display: block;
+  font-size: 15px;
+  padding: 5px;
+}
+.auto-box span:hover {
+  background-color: rgb(70, 70, 70);
+  cursor: pointer;
+}

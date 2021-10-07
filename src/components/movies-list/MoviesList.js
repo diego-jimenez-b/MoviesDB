@@ -1,9 +1,9 @@
 import { useCallback, useState, useEffect } from 'react';
 import MovieDetails from '../movie-details/MovieDetails';
 import Movie from './Movie';
-import arrowIcon from '../../assets/icons/down-arrow.svg';
 import classes from './MoviesList.module.css';
 import LoadingSpinner from '../UI/LoadingSpinner';
+import Filters from './filters/Filters';
 
 const genresArr = [
   { id: 0, name: 'All' },
@@ -28,7 +28,6 @@ const MoviesList = ({
   isLoading,
   error,
 }) => {
-  const [showFilters, setShowFilters] = useState(false);
   const [currentFetchingPage, setCurrentFetchingPage] = useState(1);
 
   const [selectedGenreId, setSelectedGenreId] = useState(0);
@@ -42,7 +41,6 @@ const MoviesList = ({
   );
 
   const closeDetailsHandler = () => setSelectedMovie(null);
-  const toggleFiltersHandler = () => setShowFilters((prevState) => !prevState);
 
   const searchGenderHandler = (id) => {
     setSelectedGenreId(id);
@@ -78,29 +76,11 @@ const MoviesList = ({
 
   return (
     <section className={classes.section}>
-      {displayType !== 'all' && (
-        <div className={classes['show-genres']} onClick={toggleFiltersHandler}>
-          <img
-            src={arrowIcon}
-            alt='arrow-icon'
-            className={showFilters ? classes.rotate : ''}
-          />
-          <span>Search by genre</span>
-        </div>
-      )}
-      {displayType !== 'all' && showFilters && (
-        <ul className={classes.filters}>
-          {genres.map((genre) => (
-            <li
-              className={selectedGenreId === genre.id ? classes.selected : ''}
-              key={genre.id}
-              onClick={searchGenderHandler.bind(null, genre.id)}
-            >
-              {genre.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <Filters
+        genres={genres}
+        onSearchGender={searchGenderHandler}
+        selectedGenreId={selectedGenreId}
+      />
 
       <h2>Trending this week</h2>
 
