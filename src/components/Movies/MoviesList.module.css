@@ -73,3 +73,11 @@ ul.filters {
   cursor: pointer;
   background-color: rgb(145, 22, 145);
 }
+
+.msg {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 50px;
+}

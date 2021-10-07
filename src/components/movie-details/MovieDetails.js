@@ -1,26 +1,27 @@
 import { Fragment, useState } from 'react';
 import { useEffect } from 'react/cjs/react.development';
 import { getImgUrl, getMediaUrl } from '../../api/api';
+import useHttp from '../../hooks/useHttp';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import Modal from '../UI/Modal';
 
 import classes from './MovieDetails.module.css';
 
 const MovieDetails = ({ id, type, onClose }) => {
+  const { fetchData, isLoading, error } = useHttp();
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(getMediaUrl(type, id))
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, [id, type]);
+    fetchData(getMediaUrl(type, id), (data) => {
+      setData(data);
+    });
+  }, [id, type, fetchData]);
 
-  if (!data) {
+  if (!data || isLoading || error) {
     return (
-      <Modal className={classes.message}>
-        <LoadingSpinner />
+      <Modal className={classes.message} onClose={onClose}>
+        {!error && <LoadingSpinner />}
+        {error && <p className={classes.msg}>Movie could not be found</p>}
       </Modal>
     );
   }

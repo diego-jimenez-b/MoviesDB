@@ -68,3 +68,10 @@
   font-weight: bold;
   z-index: 5;
 }
+
+.msg {
+  border-radius: 5px;
+  background-color: white;
+  padding: 15px 30px;
+  font-weight: bold;
+}

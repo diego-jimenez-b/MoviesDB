@@ -21,7 +21,13 @@ const genresArr = [
 
 let isInitial = true;
 
-const MoviesList = ({ moviesList, onFetchByGenre, displayType, isLoading }) => {
+const MoviesList = ({
+  moviesList,
+  onFetchByGenre,
+  displayType,
+  isLoading,
+  error,
+}) => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentFetchingPage, setCurrentFetchingPage] = useState(1);
 
@@ -98,12 +104,23 @@ const MoviesList = ({ moviesList, onFetchByGenre, displayType, isLoading }) => {
 
       <h2>Trending this week</h2>
 
-      <ul className={classes.list}>
-        {isLoading && moviesList.length === 0 && <LoadingSpinner />}
-        {moviesList.map((movie) => (
-          <Movie key={movie.id} data={movie} onShowDetails={showMovieDetails} />
-        ))}
-      </ul>
+      {isLoading && moviesList.length === 0 && <LoadingSpinner />}
+      {error && (
+        <p className={classes.msg}>
+          Something went wrong, please try again in a few moments
+        </p>
+      )}
+      {moviesList.length > 0 && !error && (
+        <ul className={classes.list}>
+          {moviesList.map((movie) => (
+            <Movie
+              key={movie.id}
+              data={movie}
+              onShowDetails={showMovieDetails}
+            />
+          ))}
+        </ul>
+      )}
 
       {isLoading && moviesList.length > 0 && <LoadingSpinner />}
       {displayType !== 'all' && selectedGenreId !== 0 && (
