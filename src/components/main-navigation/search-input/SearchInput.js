@@ -72,7 +72,7 @@ const SearchInput = ({ displayType, placeholderText }) => {
             autocomplete.map((obj) => (
               <span
                 key={`auto_${obj.id}`}
-                onClick={selectMovieHandler.bind(null, obj.id, obj.type)}
+                onClick={selectMovieHandler.bind(null, obj.id, obj.media_type)}
               >
                 {obj.title ? obj.title : obj.name}
               </span>

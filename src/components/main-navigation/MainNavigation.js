@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classes from './MainNavigation.module.css';
 import SearchInput from './search-input/SearchInput';
 
@@ -44,4 +45,4 @@ const MainNavigation = ({ onChangeType, displayType }) => {
   );
 };
 
-export default MainNavigation;
+export default memo(MainNavigation);

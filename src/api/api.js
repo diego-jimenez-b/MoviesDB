@@ -21,6 +21,7 @@ export const getAutocompleteUrl = (type, input) => {
 };
 
 export const getMediaUrlByGenre = (type, genreId, pageNum) => {
-  const pagePath = pageNum ? `&page=${pageNum}` : '';
-  return `${config.url}/discover/${type}?api_key=${config.apiKey}&with_genres=${genreId}${pagePath}`;
+  const pagePath = pageNum ? `&page=${pageNum}` : '&page=1';
+  const genrePath = genreId ? `&with_genres=${genreId}` : '';
+  return `${config.url}/discover/${type}?api_key=${config.apiKey}${genrePath}${pagePath}`;
 };
