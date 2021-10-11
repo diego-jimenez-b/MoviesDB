@@ -25,8 +25,6 @@ const MovieDetails = ({ id, type, onClose }) => {
     );
   }
 
-  console.log(data);
-
   const {
     poster_path,
     title,
